@@ -66,7 +66,7 @@ const Hero = () => {
         borderColor={true}
       />
 
-      <div className="absolute h-dvh w-500 flex justify-center items-center mx-auto">
+      <div className="absolute h-dvh w-500 flex justify-center items-center mx-auto -z-1 md:z-1">
         <Spline 
           scene="https://prod.spline.design/7KW4b1OreXkzqasO/scene.splinecode" 
           onLoad={onLoad}
