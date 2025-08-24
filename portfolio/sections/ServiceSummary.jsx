@@ -27,7 +27,7 @@ const ServiceSummary = () => {
         });
 
         gsap.to('#title-service-3',{
-            x:'80%',
+            x:'100%',
             scrollTrigger:{
                 target: '#title-service-3',
                 scrub: 1,

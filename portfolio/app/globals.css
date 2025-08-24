@@ -50,7 +50,7 @@ body {
 }
 
  .contact-text-responsive {
-  @apply font-light text-[42px] sm:text-[52px] md:text-[62px] lg:text-[100px];
+  @apply font-light text-[42px] sm:text-[52px] md:text-[62px] lg:text-[80px];
 }
 
 .border-red{
