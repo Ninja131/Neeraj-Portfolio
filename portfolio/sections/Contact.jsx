@@ -25,7 +25,7 @@ const Contact = () => {
     >
       <div>
         <AnimatedHeaderSection
-          subTitle={"You Dream It, I Code it"}
+          subTitle={"From Idea to Reality, I Make It Happen"}
           title={"Contact"}
           text={text}
           textColor={"text-white"}
