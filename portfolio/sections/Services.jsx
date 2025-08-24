@@ -14,7 +14,7 @@ const Services = () => {
 
   // animation starts here
   useEffect(() => {
-    const ctc = gsap.context(()=>{
+    const ctx = gsap.context(()=>{
         serviceRefs.current.forEach((el)=>{
             if(!el) return;
             gsap.from(el,{
