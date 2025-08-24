@@ -1,0 +1,155 @@
+'use client';
+import { socials } from '@/constants';
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from "gsap";
+import Link from 'next/link';
+
+const NavBar = () => {
+  const navRef = useRef(null);
+  const linkRef = useRef([]);
+  const contactRef = useRef(null);
+  const topLineRef = useRef(null);
+  const bottomLineRef = useRef(null);
+  const tl = useRef(null);
+  const iconTl=  useRef(null);
+  const [isOpen, setIsOpen]= useState(false);
+  const [showBurger, setShowBurger] = useState(true);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const nav = navRef.current;
+      const links = linkRef.current;
+      const contacts = contactRef.current;
+
+      // Set initial positions
+      gsap.set(nav, { x: "100%" });
+      gsap.set([...links, contacts], { autoAlpha: 0, x: -20 });
+
+      // Timeline nav
+      tl.current = gsap.timeline({ paused: true })
+        .to(nav, { x: 0, duration: 1, ease: 'power3.out' })
+        .to([...links], { autoAlpha: 1, x: 0, stagger: 0.1, duration: 0.5, ease: 'power2.out' }, '<+0.2')
+        .to(contacts, { autoAlpha: 1, x: 0, duration: 0.5, ease: 'power2.out' }, '<+0.4');
+
+      // Timeline nav button
+      iconTl.current= gsap.timeline({paused:true})
+        .to(topLineRef.current,{
+          rotate:45,
+          y:3.3,
+          duration:0.3,
+          ease:'power2.inOut',
+        })
+        .to(bottomLineRef.current,{
+          rotate:-45,
+          y:-3.3,
+          duration:0.3,
+          ease:'power2.inOut',
+        },'<');
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    const handleScroll = () => {
+      if (!isOpen) {
+        const currentScrollY = window.scrollY;
+        setShowBurger(currentScrollY <= lastScrollY || currentScrollY < 10);
+        lastScrollY = currentScrollY;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isOpen]);
+
+  // toggle menu 
+  const toggleMenu = ()=>{
+    if(isOpen){
+      tl.current.reverse();
+      iconTl.current.reverse();
+    } else {
+      tl.current.play();
+      iconTl.current.play();
+    }
+    setIsOpen(!isOpen);
+  };
+
+  // close nav when link clicked
+  const handleLinkClick = () => {
+    if (isOpen) {
+      tl.current.reverse();
+      iconTl.current.reverse();
+      setIsOpen(false);
+    }
+  };
+
+  return (
+    <>
+      <nav 
+        ref={navRef} 
+        className='fixed z-50 flex flex-col justify-between w-full h-full px-10 uppercase bg-black text-white/80 py-4 gap-y-10 md:w-1/2 md:left-1/2'
+      >
+        {/* Links */}
+        <div className='flex flex-col gap-y-2'>
+          {['hero','services','about','work','contact'].map((section, idx) => (
+            <div key={idx} ref={(el)=>(linkRef.current[idx]=el)}>
+              <Link 
+                href={`/#${section}`} 
+                onClick={handleLinkClick}   // 👈 auto-close
+                className="transition-all duration-300 cursor-pointer hover:text-white text-6xl md:text-8xl"
+              >
+                {section}
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        {/* Contact box */}
+        <div ref={contactRef} className='flex justify-between gap-8 md:flex-row'>
+          <div className='font-light'>
+            <p className='tracking-wider text-white/50'>E-mail</p>
+            <p className='text-xl tracking-wider lowercase text-pretty'>neerajneeraj1541@gmail.com</p>
+          </div>
+
+          <div className='font-light'>
+            <p className='tracking-wider text-white/50'>Social Media</p>
+            <div className='flex flex-col flex-wrap md:flex-row gap-x-2'>
+              {socials.map((socials,idx)=>(
+                <a  
+                  key={socials.name} 
+                  className='text-sm leading-loose tracking-widest uppercase hover:text-white cursor-pointer transition-colors duration-300'
+                  href={socials.href}
+                >
+                  {`{${socials.name}}`}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Burger menu */}
+      <div
+        className="border-2 border-white fixed z-50 flex flex-col items-center justify-center gap-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10"
+        onClick={toggleMenu}
+        style={
+          showBurger
+            ? { clipPath: "circle(50% at 50% 50%)" }
+            : { clipPath: "circle(0% at 50% 50%)" }
+        }
+      >
+        <span
+          ref={topLineRef}
+          className="block w-8 h-0.5 bg-white rounded-full origin-center"
+        ></span>
+        <span
+          ref={bottomLineRef}
+          className="block w-8 h-0.5 bg-white rounded-full origin-center"
+        ></span>
+      </div>
+    </>
+  )
+}
+
+export default NavBar;
