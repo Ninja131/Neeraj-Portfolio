@@ -90,8 +90,6 @@ const imgRef = useRef(null);
           alt="man"
         />
         </div>
-        {/* <AnimatedTextLines text={aboutText} className={"w-full text-[16px] leading-relaxed max-w-[700px]"} /> 
-        */}
         <p className={"w-full text-[16px] leading-loose max-w-[700px]"} >👋 Hey, <span className='text-white'>I’m Neeraj</span> — a student at <span className='text-white'>Lovely Professional University</span> chasing my passion for <span className='text-white'>UX/UI and 3D web experiences </span>
 
           Here’s what keeps me busy and excited- <br />
