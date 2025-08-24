@@ -163,7 +163,7 @@ const Work = () => {
               <img
                 src={`${project.image}`}
                 alt={`${project.name}-image`}
-                className=" absolute overflow-hidden bg-center rounded-4xl px-4"
+                className=" absolute  px-4"
               /></a>
               
             </div>
