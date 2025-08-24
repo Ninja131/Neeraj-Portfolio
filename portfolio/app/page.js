@@ -22,7 +22,7 @@ export default function Home() {
         duration: 1,
         onComplete: () => setLoading(false),
       });
-    }, 7000); // <-- adjust based on your assets loading time
+    }, 8000); // <-- adjust based on your assets loading time
 
     return () => clearTimeout(timeout);
   }, []);

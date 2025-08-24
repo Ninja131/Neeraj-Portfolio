@@ -153,17 +153,17 @@ const Work = () => {
 
             {/* mobile preview image */}
             <div className="px-4 lg:px-10 md:hidden h-[400px]">
-              <a className='relative w-full h-full  flex items-center justify-center'
+              <a className='relative w-full h-full  flex items-center justify-center '
               href={project.link}>
               <img
                 src={project.bgImage}
                 alt={`${project.name}-bg-image`}
-                className="object-cover w-full h-full rounded-md brightness-50"
+                className="object-cover w-full h-full rounded-md "
               />
               <img
                 src={`${project.image}`}
                 alt={`${project.name}-image`}
-                className=" absolute overflow-hidden bg-center px-14 rounded-4xl"
+                className=" absolute overflow-hidden bg-center rounded-4xl px-4"
               /></a>
               
             </div>

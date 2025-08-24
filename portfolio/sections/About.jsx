@@ -83,8 +83,9 @@ const imgRef = useRef(null);
 
     <div className="flex flex-col items-start lg:items-center justify-between gap-16 px-4 lg:px-10 pb-16 text-xl font-light tracking-wide lg:flex-row md:text-2xl lg:text-3xl text-white/60 ">
         {/* image */}
-        <div className=' relative lg:w-150 lg:h-110 w-full h-100 max-w-150  overflow-hidden rounded-2xl'>
+        <div className='flex items-center justify-center lg:w-150 lg:h-150 w-full h-100 max-w-150  overflow-hidden rounded-2xl '>
         <img
+        className='rounded-2xl'
         ref={imgRef}
           src="/profilenew.jpg"
           alt="man"
