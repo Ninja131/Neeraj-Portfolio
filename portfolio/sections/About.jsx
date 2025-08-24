@@ -86,7 +86,7 @@ const imgRef = useRef(null);
         <div className=' relative lg:w-150 lg:h-110 w-full h-100 max-w-150  overflow-hidden rounded-2xl'>
         <img
         ref={imgRef}
-          src="/profileimage.jpg"
+          src="/profilenew.jpg"
           alt="man"
         />
         </div>
