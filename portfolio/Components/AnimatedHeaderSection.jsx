@@ -85,7 +85,7 @@ const AnimatedHeaderSection = ({ subTitle, title, text, textColor, borderColor, 
       gsap.to(pathRef.current, {
         attr: { d: `M 0 0 Q ${width / 2} 0 ${width} 0` },
         duration: 1.5,
-        ease: "elastic.out(2,0.1)",
+        ease: "elastic.out(1,0.1)",
       });
     };
 
