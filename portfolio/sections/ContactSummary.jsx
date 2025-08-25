@@ -65,11 +65,11 @@ const ContactSummary = () => {
 
       <div className="overflow-hidden font-light text-center contact-text-responsive">
         <p>
-          " From,  
-          <span className="font-normal opacity-100">concept to code</span> &{" "}
-          <span className="italic">let’s craft something bold &</span> <br />
+          "From   
+          <span className="font-normal opacity-100"> concept to code,</span>{" "}
+          <span className="italic"> let’s craft something bold &</span> <br />
           {" "}
-          <span className="text-yellow-500 font-normal">inspiring</span> "
+          <span className="text-yellow-500 font-normal">inspiring</span>"
         </p>
       </div>
 
